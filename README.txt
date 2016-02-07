@@ -1,3 +1,8 @@
+<h2>Machi Koro</h2>
+
+<p>This is just some of the brainstorming ideas to get started.  I know it looks like crap and I will update this to actually explain everything properly. After that I will also put this brainstorming session into a separate .md file</p>
+
+
 Roll the dice,
 determine what cards get activated based on roll,
 reds get dealt with first,
