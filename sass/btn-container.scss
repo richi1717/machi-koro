@@ -1,0 +1,13 @@
+.btn-container {
+  text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 50px 200px;
+  .btn-padding {
+    margin-right: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    width: 150px;
+  }
+}
