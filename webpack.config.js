@@ -15,7 +15,7 @@ module.exports = {
   entry: [
     'webpack/hot/dev-server',
     'webpack-dev-server/client?http://localhost:8080',
-    path.resolve(__dirname, 'src/app.jsx')
+    path.resolve(__dirname, 'src/index.js')
   ],
   output: {
     path: PATHS.build,
@@ -38,13 +38,13 @@ module.exports = {
   module: {
     preLoaders: [
 
-        {test: /\.jsx$/, loader: "eslint-loader", exclude: /node_modules/},
+        {test: /\.js$/, loader: "eslint-loader", exclude: /node_modules/},
         {test: /\.scss$/, loaders: ['postcss'], include: PATHS.css}
 
     ],
     loaders: [
       {
-        test: /\.jsx$/,
+        test: /\.js$/,
         loaders: ["babel-loader"],
         include: [
           PATHS.app,
