@@ -6,7 +6,8 @@ const ROOT_URL = 'http://localhost:3000';
 export const FETCH_CARDS = 'FETCH_CARDS';
 
 export function fetchCards(expansion) {
-  const url = `${ROOT_URL}/cards`;
+  const expQuery = expansion === 'All' ? 'Harbor&gameSource=Millionaires%20Row' : expansion;
+  const url = `${ROOT_URL}/cards?gameSource=${expQuery}&gameSource=Base`;
   const request = axios.get(url);
 
   return {
