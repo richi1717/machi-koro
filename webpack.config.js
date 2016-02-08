@@ -56,12 +56,16 @@ module.exports = {
         test: /\.scss$/,
          loaders: ["style", "css?sourceMap", "sass?sourceMap"],
         // loaders: "style-loader!css-loader!sass-loader",
+        // loaders: ["style", "css", "sass"],
         include: [
           PATHS.css,
           PATHS.components
         ]
       }
     ]
+  },
+  sassLoader: {
+    includePaths: [path.resolve(__dirname, "./sass")]
   },
   resolve: {
     extensions: ['', '.jsx', '.js', '.json']
