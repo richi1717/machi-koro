@@ -8,6 +8,7 @@ export default class App extends Component {
     return (
       <div>
         <Expansion />
+        <CardsList />
       </div>
     );
   }
