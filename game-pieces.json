@@ -209,7 +209,7 @@
         "Landmarks.length <== 2"
       ],
       "paymentAmount": 1,
-      "gameSource": "Millionaire's Row",
+      "gameSource": "Millionaires Row",
       "amount": 6
     },
     {
@@ -229,7 +229,7 @@
         "turn"
       ],
       "paymentAmount": 8,
-      "gameSource": "Millionaire's Row",
+      "gameSource": "Millionaires Row",
       "amount": 6
     },
     {
@@ -330,7 +330,7 @@
         "playerLandmark >== 2"
       ],
       "paymentAmount": 5,
-      "gameSource": "Millionaire's Row",
+      "gameSource": "Millionaires Row",
       "amount": 6
     },
     {
@@ -393,7 +393,7 @@
         "turn"
       ],
       "paymentAmount": 2,
-      "gameSource": "Millionaire's Row",
+      "gameSource": "Millionaires Row",
       "amount": 6
     },
     {
@@ -461,7 +461,7 @@
         5,
         -2
       ],
-      "gameSource": "Millionaire's Row",
+      "gameSource": "Millionaires Row",
       "amount": 6
     },
     {
@@ -504,7 +504,7 @@
         "playerWhoRolled >== 3 Landmarks"
       ],
       "paymentAmount": "ALL",
-      "gameSource": "Millionaire's Row",
+      "gameSource": "Millionaires Row",
       "amount": 6
     },
     {
@@ -547,7 +547,7 @@
         4,
         "-card"
       ],
-      "gameSource": "Millionaire's Row",
+      "gameSource": "Millionaires Row",
       "amount": 6
     },
     {
@@ -570,7 +570,7 @@
         "turn"
       ],
       "paymentAmount": "coinsTotalAllPlayers / numberOfPlayers",
-      "gameSource": "Millionaire's Row",
+      "gameSource": "Millionaires Row",
       "amount": 4
     },
     {
@@ -662,7 +662,7 @@
         "roll"
       ],
       "paymentAmount": "buildingOwn per player",
-      "gameSource": "Millionaire's Row",
+      "gameSource": "Millionaires Row",
       "amount": 4
     },
     {
@@ -699,7 +699,7 @@
         "turn"
       ],
       "paymentAmount": "1 for each Cafe owned by all players",
-      "gameSource": "Millionaire's Row",
+      "gameSource": "Millionaires Row",
       "amount": 6
     },
     {
@@ -780,7 +780,7 @@
         "turn"
       ],
       "paymentAmount": "coinOnCardTotal",
-      "gameSource": "Millionaire's Row",
+      "gameSource": "Millionaires Row",
       "amount": 4
     },
     {
@@ -860,7 +860,7 @@
         "turn"
       ],
       "paymentAmount": 3,
-      "gameSource": "Millionaire's Row",
+      "gameSource": "Millionaires Row",
       "amount": 6
     },
     {
@@ -897,7 +897,7 @@
         "turn"
       ],
       "paymentAmount": "6 * vineyardOwn",
-      "gameSource": "Millionaire's Row",
+      "gameSource": "Millionaires Row",
       "amount": 6
     },
     {
