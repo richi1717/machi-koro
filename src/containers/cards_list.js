@@ -5,16 +5,23 @@ import _ from 'lodash';
 
 class CardsList extends Component {
   renderCards(cardData) {
-    const name = cardData.card.name;
-    // const temps = _.map(cardData.list.map(weather => weather.main.temp), (temp) => temp * 9/5 - 459.67);
-    // const pressures = cardData.list.map(weather => weather.main.pressure);
-    // const humidities = cardData.list.map(weather => weather.main.humidity);
+    const children = [];
 
-    return (
-      <tr key={name}>
-        <td><Card data={temps} color="orange" units="Fº" /></td>
-      </tr>
-    );
+    for (let key in cardData) {
+
+      if (cardData[key].type !== 'Landmark') {
+        const name = cardData[key].name;
+        const imgFront = cardData[key].imgFront;
+        children.push(
+          <tr key={name}>
+            <td><Card name={name} image={imgFront} /></td>
+          </tr>
+        );
+      }
+
+    }
+
+    return children;
   }
 
   render() {
@@ -22,13 +29,10 @@ class CardsList extends Component {
       <table className="table table-hover">
         <thead>
           <tr>
-            <th>City</th>
-            <th>Temperature (Fº)</th>
-            <th>Pressure (hPa)</th>
-            <th>Humidity (%)</th>
+            <th>Card Name</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody className="card-container">
           {this.props.cards.map(this.renderCards)}
         </tbody>
       </table>
