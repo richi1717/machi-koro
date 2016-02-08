@@ -18,7 +18,7 @@ class ExpansionButtons extends Component {
 
   handleExpansionSelection(event) {
     event.preventDefault();
-    console.log(this.state.expansion);
+
     // We need to go and fetch cards data
     this.props.fetchCards(this.state.expansion);
   }
@@ -32,7 +32,7 @@ class ExpansionButtons extends Component {
   }
 
   handleMillionClick() {
-    this.setState({ expansion: "Millionaire's Row" });
+    this.setState({ expansion: 'Millionaires Row' });
   }
 
   handleAllClick() {
