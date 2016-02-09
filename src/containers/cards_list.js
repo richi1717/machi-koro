@@ -12,10 +12,11 @@ class CardsList extends Component {
       if (cardData[key].type !== 'Landmark') {
         const name = cardData[key].name;
         const imgFront = cardData[key].imgFront;
+        const exp = cardData[key].gameSource;
         children.push(
-          <tr key={name}>
-            <td><Card name={name} image={imgFront} /></td>
-          </tr>
+          <div key={name}>
+            <Card name={name} image={imgFront}>{exp}</Card>
+          </div>
         );
       }
 
@@ -26,16 +27,9 @@ class CardsList extends Component {
 
   render() {
     return (
-      <table className="table table-hover">
-        <thead>
-          <tr>
-            <th>Card Name</th>
-          </tr>
-        </thead>
-        <tbody className="card-container">
-          {this.props.cards.map(this.renderCards)}
-        </tbody>
-      </table>
+      <div className="card-container">
+        {this.props.cards.map(this.renderCards)}
+      </div>
     );
   }
 }

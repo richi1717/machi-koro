@@ -38,6 +38,7 @@
     "postcss-loader": "^0.8.0",
     "react-addons-test-utils": "^0.14.6",
     "react-transform-hmr": "^1.0.1",
+    "redux-devtools": "^3.1.1",
     "sass-loader": "^3.1.2",
     "sinon": "^1.17.2",
     "skin-deep": "^0.14.0",

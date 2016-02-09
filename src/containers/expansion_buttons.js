@@ -18,6 +18,7 @@ class ExpansionButtons extends Component {
 
   handleExpansionSelection(event) {
     event.preventDefault();
+    event.target.remove();
 
     // We need to go and fetch cards data
     this.props.fetchCards(this.state.expansion);
@@ -41,11 +42,11 @@ class ExpansionButtons extends Component {
 
   render() {
     return (
-      <form onSubmit={this.handleExpansionSelection} className="btn-group">
-        <button onClick={this.handleBaseClick} type="submit" className="btn btn-success">Base</button>
-        <button onClick={this.handleHarborClick} type="submit" className="btn btn-primary">Harbor</button>
-        <button onClick={this.handleMillionClick} type="submit" className="btn btn-warning">Millionaire's Row</button>
-        <button onClick={this.handleAllClick} type="submit" className="btn btn-danger">All</button>
+      <form onSubmit={this.handleExpansionSelection} className="btn-container">
+        <button onClick={this.handleBaseClick} type="submit" className="btn btn-padding btn-success">Base</button>
+        <button onClick={this.handleHarborClick} type="submit" className="btn btn-padding btn-primary">Harbor</button>
+        <button onClick={this.handleMillionClick} type="submit" className="btn btn-padding btn-warning">Millionaire's Row</button>
+        <button onClick={this.handleAllClick} type="submit" className="btn btn-padding btn-danger">All</button>
       </form>
     );
   }
