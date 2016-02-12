@@ -10,7 +10,24 @@ export const SORT_CARDS = 'SORT_CARDS';
 export function fetchCards(expansion) {
   const expQuery = expansion === 'All' ? 'Harbor&gameSource=Millionaires%20Row' : expansion;
   const url = `${ROOT_URL}/cards?gameSource=${expQuery}&gameSource=Base`;
-  const request = axios.get(url);
+  const request = axios.get(url)
+    .then(function (data){
+      let sortedCards = _.orderBy(data.data, function (obj) {
+        if (obj.roll.length > 0) {
+          return obj.roll[0];
+        } else {
+          return obj.roll;
+        }
+      });
+      sortedCards = _.orderBy(data.data, function (obj) {
+        if (obj.roll.length > 0) {
+          return obj.roll[1];
+        } else {
+          return obj.roll;
+        }
+      });
+      return sortedCards;
+    });
 
   return {
     type: FETCH_CARDS,
@@ -19,10 +36,15 @@ export function fetchCards(expansion) {
 }
 
 export function sortCards(cards) {
-  cards = _.sortBy(cards, ['roll[0]'], ['asc']);
-  console.log(cards);
+  let sortedCards = _.orderBy(cards, function (obj) {
+    if (obj.roll.length > 0) {
+      return obj.roll[0];
+    } else {
+      return obj.roll;
+    }
+  });
+  console.log(sortedCards);
   return {
-    type: SORT_CARDS,
-    payload: cards
+    payload: sortedCards
   };
 }
