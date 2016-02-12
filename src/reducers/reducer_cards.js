@@ -3,9 +3,9 @@ import { FETCH_CARDS, SORT_CARDS } from '../actions/index';
 export default function(state = [], action) {
   switch (action.type) {
   case FETCH_CARDS:
-    return [ action.payload.data, ...state ];
+    return [ action.payload, ...state ];
   case SORT_CARDS:
-    console.log(action, 'hey');
+  console.log('happened');
     return [ action.payload, ...state ];
   }
 
