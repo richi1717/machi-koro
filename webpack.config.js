@@ -24,22 +24,22 @@ module.exports = {
   },
   devtool: "inline-source-map",
   plugins: [
-      new HtmlwebpackPlugin({
-        title: 'Machi Koro',
-        template: 'build/index.html',
-        inject: true
-      }),
-      new webpack.ProvidePlugin({
-        $: 'jquery',
-        jQuery: 'jquery',
-        "window.jQuery": 'jquery'
-      })
+    new HtmlwebpackPlugin({
+      title: 'Machi Koro',
+      template: 'build/index.html',
+      inject: true
+    }),
+    new webpack.ProvidePlugin({
+      $: 'jquery',
+      jQuery: 'jquery',
+      "window.jQuery": 'jquery'
+    })
   ],
   module: {
     preLoaders: [
 
-        {test: /\.js$/, loader: "eslint-loader", exclude: /node_modules/},
-        {test: /\.scss$/, loaders: ['postcss'], include: PATHS.css}
+      {test: /\.js$/, loader: "eslint-loader", exclude: /node_modules/},
+      {test: /\.scss$/, loaders: ['postcss'], include: PATHS.css}
 
     ],
     loaders: [
@@ -54,14 +54,14 @@ module.exports = {
       },
       {
         test: /\.scss$/,
-         loaders: ["style", "css?sourceMap", "sass?sourceMap"],
-        // loader: 'style!css!sass?sourceMap',
-        // loaders: "style-loader!css-loader!sass-loader",
-        // loaders: ["style", "css", "sass"],
-        // include: [
-        //   PATHS.css,
-        //   PATHS.components
-        // ]
+         loaders: ["style", "css?sourceMap?root=.", "sass?sourceMap"],
+      },
+      {
+        test: /\.(jpe?g|png|gif|svg)$/i,
+        loaders: [
+          'url?limit=8192',
+          'img'
+        ]
       }
     ]
   },
