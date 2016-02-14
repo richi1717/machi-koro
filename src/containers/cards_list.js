@@ -5,37 +5,29 @@ import _ from 'lodash';
 
 class CardsList extends Component {
   renderCards(cardData) {
+    console.log(this.props.expansion);
     const children = [];
-
-    for (let key in cardData) {
-
-      if (cardData[key].type !== 'Landmark') {
-        const name = cardData[key].name;
-        const imgFront = cardData[key].imgFront;
-        const exp = cardData[key].gameSource;
-        children.push(
-          <div key={name}>
-            <Card name={name} image={imgFront}>{exp}</Card>
-          </div>
-        );
-      }
-
-    }
-
+    console.log(cardData);
+    cardData.map((card, index) => {
+      children.push(
+        <Card card={card} key={index} />
+      );
+    });
     return children;
   }
 
   render() {
+    console.log(this.props);
     return (
       <div className="card-container">
-        {this.props.cards.map(this.renderCards)}
+        {this.props.cards.map(this.renderCards.bind(this))}
       </div>
     );
   }
 }
 
-function mapStateToProps({ cards }) {
-  return { cards };
+function mapStateToProps({ cards, expansion }) {
+  return { cards, expansion };
 }
 
 export default connect(mapStateToProps)(CardsList);
