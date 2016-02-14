@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { fetchCards } from '../actions/index';
+import { setExpansion } from '../actions/action_expansion';
 
 class ExpansionButtons extends Component {
   constructor(props) {
@@ -22,6 +23,7 @@ class ExpansionButtons extends Component {
 
     // We need to go and fetch cards data
     this.props.fetchCards(this.state.expansion);
+    this.props.setExpansion(this.state.expansion);
   }
 
   handleBaseClick() {
@@ -53,7 +55,7 @@ class ExpansionButtons extends Component {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ fetchCards }, dispatch);
+  return bindActionCreators({ fetchCards, setExpansion }, dispatch);
 }
 
 export default connect(null, mapDispatchToProps)(ExpansionButtons);
