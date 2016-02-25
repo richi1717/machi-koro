@@ -1,27 +1,47 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { purchaseCard } from '../actions/action_purchase';
+import { addCoins } from '../actions/action_coins';
+let num = 10;
 
-export default class Card extends Component {
+class Card extends Component {
   constructor(props) {
-    console.log(props.card);
     super(props);
     this.state = {
       isSelected: false,
-      cardTotal: props.card.amount,
-      cardName: props.card.name
+      cardTotal: this.props.card.amount,
+      purchased: null
     };
   }
 
   render() {
-    if (this.props.card.type !== 'Landmark') {
-      return <div>
+    // console.log(num);
+    if (this.props.exp === 'Base') {
+      return <div ref={this.props.card.name}>
         {this.handleCardRender()}
         {this.handleCardClickRender()}
         {this.purchaseCard()}
         {this.state.cardTotal >= 1 ? <h4 className="card-info">x{this.state.cardTotal}</h4> : null}
       </div>;
+    } else if (this.props.num <= num) {
+      return <div ref={this.props.card.name}>
+        {this.handleCardRender()}
+        {this.handleCardClickRender()}
+        {this.purchaseCard()}
+        {this.state.cardTotal >= 1 ? <h4 className="card-info">x{this.state.cardTotal}</h4> : null}
+      </div>;
+    } else if (this.props.num > num) {
+      return <span>
+        {this.buildDeck()}
+      </span>;
     } else {
       return null;
     }
+  }
+
+  buildDeck() {
+    return <img className="deck-view" src="./images/deck-back.jpg" />;
   }
 
   handleCardRender() {
@@ -37,8 +57,7 @@ export default class Card extends Component {
   }
 
   cardClick() {
-    var selected = !this.state.isSelected;
-    this.setState({ isSelected: selected });
+    this.setState({ isSelected: !this.state.isSelected });
   }
 
   purchaseCard() {
@@ -51,11 +70,37 @@ export default class Card extends Component {
   }
 
   returnCard() {
-    $('.image-view-selected').trigger('click');
+    this.setState({ isSelected: false });
   }
 
   buySelected() {
-    $('.image-view-selected').trigger('click');
-    this.setState({cardTotal: this.state.cardTotal - 1});
+    if (this.state.cardTotal === 1) {
+      let name = this.props.card.name;
+      let node = this.refs[name];
+      node.style = 'display: none';
+    }
+    console.log(this.props.coins, this.props.card.cost);
+    if (this.props.coins - this.props.card.cost >= 0) {
+      num++;
+      this.setState({
+        cardTotal: this.state.cardTotal - 1,
+        isSelected: false
+      });
+      this.props.addCoins(-this.props.card.cost);
+      this.props.purchaseCard(this.props.card);
+    } else {
+      this.setState({isSelected: false});
+      alert("You don't have enough money!");
+    }
   }
-};
+}
+
+function mapStateToProps({ purchasedCards, coins }) {
+  return { purchasedCards, coins };
+}
+
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({ purchaseCard, addCoins }, dispatch);
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Card);

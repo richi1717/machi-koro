@@ -1,33 +1,30 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import Card from '../components/card';
-import _ from 'lodash';
+import Cards from '../containers/cards';
+import { bindActionCreators } from 'redux';
+import { cardShuffle } from '../actions/action_shuffle';
 
 class CardsList extends Component {
-  renderCards(cardData) {
-    console.log(this.props.expansion);
-    const children = [];
-    console.log(cardData);
-    cardData.map((card, index) => {
-      children.push(
-        <Card card={card} key={index} />
-      );
-    });
-    return children;
+  componentDidUpdate() {
+    this.props.expansion !== 'Base' ? this.props.cardShuffle(this.props.deck) : null;
+    // return null;
   }
 
   render() {
-    console.log(this.props);
     return (
-      <div className="card-container">
-        {this.props.cards.map(this.renderCards.bind(this))}
+      <div>
+        <Cards />
       </div>
     );
   }
 }
 
-function mapStateToProps({ cards, expansion }) {
-  return { cards, expansion };
+function mapStateToProps({ expansion, deck }) {
+  return { expansion, deck };
 }
 
-export default connect(mapStateToProps)(CardsList);
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({ cardShuffle }, dispatch);
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(CardsList);

@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { fetchCards } from '../actions/index';
 import { setExpansion } from '../actions/action_expansion';
+import { setDeck } from '../actions/action_deck';
 
 class ExpansionButtons extends Component {
   constructor(props) {
@@ -15,6 +16,10 @@ class ExpansionButtons extends Component {
     this.handleHarborClick = this.handleHarborClick.bind(this);
     this.handleMillionClick = this.handleMillionClick.bind(this);
     this.handleAllClick = this.handleAllClick.bind(this);
+  }
+
+  componentDidUpdate() {
+    this.state.expansion !== 'Base' ? this.props.setDeck(this.props.cards) : null;
   }
 
   handleExpansionSelection(event) {
@@ -54,8 +59,12 @@ class ExpansionButtons extends Component {
   }
 }
 
-function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ fetchCards, setExpansion }, dispatch);
+function mapStateToProps({ cards }) {
+  return { cards };
 }
 
-export default connect(null, mapDispatchToProps)(ExpansionButtons);
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({ fetchCards, setExpansion, setDeck }, dispatch);
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ExpansionButtons);
