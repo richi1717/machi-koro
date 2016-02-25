@@ -10,3 +10,15 @@
   top: 0;
   transform: translate(-50%, 0);
 }
+
+.deck-view {
+  left: -12rem;
+  position: absolute;
+  top: 9rem;
+  width: 8rem;
+  height: 10rem;
+}
+
+.hidden {
+  display: none;
+}
