@@ -1,7 +1,7 @@
 import _ from 'lodash';
 
 export default (data) => {
-  let sortedCards = _.orderBy(data.data, function (obj) {
+  let sortedCards = _.orderBy(data, function (obj) {
     if (obj.roll.length > 0) {
       return obj.roll[0];
     } else {
